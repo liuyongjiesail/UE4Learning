@@ -1,0 +1,46 @@
+一、反射
+
+反射捕获：
+
+平面反射：
+
+屏幕空间反射：
+
+SSR
+
+
+二、光照
+
+静态光源 Static Lights
+
+可移动光源 Moveable Lignts
+
+固定光源 Stationary Lights
+
+静态光照和阴影：
+
+动态光照和阴影：级联阴影 - 方向光，位置。 逐对象阴影 
+
+虚幻5：Lumen 和 VSM 	全动态全局光照和反射
+
+前向渲染，延迟渲染
+
+半透明渲染
+
+后期处理 依赖合成着色器。效果，某个区域跟着光走，边上可以有炫光效果。聚光灯
+
+实时Ray Tracing
+
+性能调试 Profiling 
+
+1. 命令：stat unit 打开每个线程的消耗值 
+stat game 
+stat initviews
+
+2. GPU Visualizer 打开命令 Command + Shift + ,
+
+3. Unreal Insight 一个很有用的工具，看到每个函数执行的时间
+
+4. Frontend session
+
+

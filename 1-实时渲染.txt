@@ -1,0 +1,66 @@
+渲染前的准备
+
+1.距离剔除  
+搜索 distance 设置 500cm，物体离相机5米远是看不到的
+设置某个区域：Cull Distance Volume 。所有包围的物理都会被culling
+设置某个物体：Never Distance Cull。永远不会被剔除
+
+ 
+2.视锥剔除
+打开视锥方式：点击 show 按钮 -> Advanced -> Camera Frustums
+打开控制台命令：运行时，按 ~ 键，输入 FreezeRendering。输入ToggleDebugCamera，能看到全景。重新输入同样命令，就解除这个命令操作
+
+3.预计算可见性
+创建 PrecomputedVisibilityOverrideVolume ，拖入场景中。放大到覆盖所有
+点击 Setting -> WordSetting -> 选中 Precomputed Visibility
+点击 Build Option -> Precomputed Static Visibility
+点击 show -> Visualize -> Precomputed Visibility Cells
+
+4.遮挡剔除
+
+
+几何体渲染：已经知道物体列表和其位置信息，再进行渲染。
+Early Z Pass 渲染：跳过已绘制过的像素
+Drawcall是指在渲染时在特定Pass中采用单一处理过程
+切换材质影响性能开销，在GPU渲染时，引擎会根据材质对物体进行排序，相同材质的物体会在一个批次里被绘制
+Drawcall 通过stat RHI 命令查看运行统计数据
+2000-3000 合理；>=5000 略高；>=10000 也许有性能问题 移动端一般是几百个
+
+Render Doc 插件的使用，开启后没有图标，不知道为啥，后面再查查
+
+
+Shader
+
+WPO(World Position Offset) 渲染大量鸟，水面，草的飘动，AI模型的运动
+
+Vertex Shaders （顶点着色器） 并不直接修改模型，只是视觉上的效果
+
+Nanite 虚幻5推出的虚拟几何体系统，高质量渲染效果
+
+光栅化 和 G-Buffer
+
+Overshading
+
+LOD  Level Of Details
+
+选择 List -> Buffer Visualization -> Overview
+
+G-Buffer：在project setting中勾选 customDeptahPass， 勾选某个物体的 Custom depath pass。 
+点击场景最左边上的下拉按钮 -> High Resolution Screenshot -> 勾选 use custom depath as mask.
+
+
+纹理  Texture
+
+开启Mipmap，长宽必须为 2的幂次方
+开启后，内存会增加1.3倍，建议开启
+
+像素着色器 Pixel shader 和材质
+
+Shader Code ->  HLSL Code
+
+PBR 材质管线很大一部分都是基于PBR，也就是基于物理渲染 Physical Based Rendering
+
+每个材质的纹理采样器最大数量是16个
+
+
+
